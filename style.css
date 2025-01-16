@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(2, 49, 34);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    color: aquamarine;
+}
+
+#list {
+    display: grid;
+    grid: auto-flow / 1fr 1fr 1fr;
+}
+
+.card {
+    background-color: aquamarine;
+    color: rgb(2, 49, 34);
+    border: 1px solid rgb(68, 45, 18);
+    border-radius: 4px;
+}
+
+.card > h2 {
+    text-align: center;
+}
