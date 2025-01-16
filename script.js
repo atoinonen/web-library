@@ -21,20 +21,25 @@ function listLibrary(library = myLibrary) {
         const card = document.createElement("div");
         card.className = "card"
 
+        const cardTitle = document.createElement("div");
+        cardTitle.className = "card-title";
+        
+        const title = document.createElement("h2");
+        title.textContent = book.title;
+        cardTitle.appendChild(title);
+
         const read = document.createElement("span");
         read.textContent = book.read ? "☑" : "☐";
         read.className = "checkmark";
-        card.appendChild(read);
+        cardTitle.appendChild(read);
+
+        card.appendChild(cardTitle);
         
         if (book.read){
             card.className += " read"
         }else{
             card.className += " not-read"
         }
-
-        const title = document.createElement("h2");
-        title.textContent = book.title;
-        card.appendChild(title);
 
         const author = document.createElement("h5");
         author.textContent = "by: " + book.author;
