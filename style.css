@@ -1,14 +1,39 @@
 * {
     margin: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body {
     background-color: rgb(2, 49, 34);
-    font-family: 'Courier New', Courier, monospace;
+    margin: 4px
+}
+
+.hero-header {
+    display: flex;
 }
 
 h1 {
     color: aquamarine;
+    display: inline;
+    flex: auto;
+}
+
+button#new-book {
+    background-color: aquamarine;
+    color: rgb(2, 49, 34);
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+button#new-book:hover {
+    background-color: rgb(96, 189, 158);
+    transition: .5s;
+}
+
+button#new-book:active {
+    color: aquamarine;
+    transition: 0s;
 }
 
 #list {
