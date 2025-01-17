@@ -36,6 +36,11 @@ button#new-book:active {
     transition: 0s;
 }
 
+#add-book-form {
+    background-color: aquamarine;
+    font-weight: bold;
+}
+
 #list {
     display: grid;
     grid: auto-flow / 1fr 1fr 1fr;

@@ -53,8 +53,25 @@ function listLibrary(library = myLibrary) {
     }
 }
 
+function showForm(){
+    const div = document.getElementById("add-book-form");
+    const form = document.createElement("form");
+    const authorLabel = document.createElement("label");
+    const authorInput = document.createElement("input");
+    authorLabel.for = "author";
+    authorLabel.textContent = "Author";
+    authorInput.type = "text";
+    authorInput.name = "author";
+    authorInput.id = "author";
+    form.appendChild(authorLabel);
+    form.appendChild(authorInput);
+    div.appendChild(form);
+}
+
 new Book("Odyssey", "Homer", 12109, false);
 new Book("Hevoskuiskaaja", "Nicholas Evans", 678, true);
 new Book("Shogun", "James Clavell", 1152, true);
 new Book("Taipan", "James Clavell", 899, false)
 listLibrary()
+const newBookButton = document.getElementById("new-book");
+newBookButton.addEventListener("click", showForm);
