@@ -56,16 +56,22 @@ function listLibrary(library = myLibrary) {
 function showForm(){
     const div = document.getElementById("add-book-form");
     const form = document.createElement("form");
-    const authorLabel = document.createElement("label");
-    const authorInput = document.createElement("input");
-    authorLabel.for = "author";
-    authorLabel.textContent = "Author";
-    authorInput.type = "text";
-    authorInput.name = "author";
-    authorInput.id = "author";
-    form.appendChild(authorLabel);
-    form.appendChild(authorInput);
+    addFormField("title", "Title", "text", form);
+    addFormField("author", "Author", "text", form);
+    addFormField("pages", "Number of pages", "number", form);
     div.appendChild(form);
+}
+
+function addFormField(id, text, type, form){
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    label.htmlFor = id;
+    label.textContent = text;
+    input.type = type;
+    input.name = id;
+    input.id = id;
+    form.appendChild(label);
+    form.appendChild(input);
 }
 
 new Book("Odyssey", "Homer", 12109, false);
