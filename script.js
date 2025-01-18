@@ -59,6 +59,12 @@ function showForm(){
     addFormField("title", "Title", "text", form);
     addFormField("author", "Author", "text", form);
     addFormField("pages", "Number of pages", "number", form);
+    addFormField("read", "Have you read the book?", "checkbox", form);
+    const button = document.createElement("button");
+    button.type = "submit";
+    button.textContent = "Add book";
+    form.appendChild(button);
+    div.style.maxHeight = "150px";
     div.appendChild(form);
 }
 
