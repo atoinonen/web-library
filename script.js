@@ -16,41 +16,45 @@ function addBookToLibrary(book, library = myLibrary) {
 }
 
 function listLibrary(library = myLibrary) {
-    const list = document.getElementById("list");
     for (var book of library) {
-        const card = document.createElement("div");
-        card.className = "card"
-
-        const cardTitle = document.createElement("div");
-        cardTitle.className = "card-title";
-        
-        const title = document.createElement("h2");
-        title.textContent = book.title;
-        cardTitle.appendChild(title);
-
-        const read = document.createElement("span");
-        read.textContent = book.read ? "☑" : "☐";
-        read.className = "checkmark";
-        cardTitle.appendChild(read);
-
-        card.appendChild(cardTitle);
-        
-        if (book.read){
-            card.className += " read"
-        }else{
-            card.className += " not-read"
-        }
-
-        const author = document.createElement("h5");
-        author.textContent = "by: " + book.author;
-        card.appendChild(author);
-
-        const pages = document.createElement("p");
-        pages.textContent = book.pages + " pages";
-        card.appendChild(pages);
-
-        list.appendChild(card);
+        listBook(book);
     }
+}
+
+function listBook(book) {
+    const list = document.getElementById("list");
+    const card = document.createElement("div");
+    card.className = "card"
+
+    const cardTitle = document.createElement("div");
+    cardTitle.className = "card-title";
+
+    const title = document.createElement("h2");
+    title.textContent = book.title;
+    cardTitle.appendChild(title);
+
+    const read = document.createElement("span");
+    read.textContent = book.read ? "☑" : "☐";
+    read.className = "checkmark";
+    cardTitle.appendChild(read);
+
+    card.appendChild(cardTitle);
+
+    if (book.read) {
+        card.className += " read"
+    } else {
+        card.className += " not-read"
+    }
+
+    const author = document.createElement("h5");
+    author.textContent = "by: " + book.author;
+    card.appendChild(author);
+
+    const pages = document.createElement("p");
+    pages.textContent = book.pages + " pages";
+    card.appendChild(pages);
+
+    list.appendChild(card);
 }
 
 function showForm(){
@@ -66,6 +70,7 @@ function showForm(){
     form.appendChild(button);
     div.style.maxHeight = "150px";
     div.appendChild(form);
+    form.addEventListener("submit", addBook);
 }
 
 function addFormField(id, text, type, form){
@@ -78,6 +83,16 @@ function addFormField(id, text, type, form){
     input.id = id;
     form.appendChild(label);
     form.appendChild(input);
+}
+
+function addBook(event) {
+    event.preventDefault();
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const read = document.getElementById("read").checked;
+    const book = new Book(title, author, pages, read);
+    listBook(book);
 }
 
 new Book("Odyssey", "Homer", 12109, false);
