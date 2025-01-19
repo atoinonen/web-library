@@ -72,6 +72,7 @@ function showForm(){
     div.style.maxHeight = "150px";
     div.appendChild(form);
     form.addEventListener("submit", addBook);
+    document.getElementById("new-book").disabled = true;
 }
 
 function addFormField(id, text, type, form){
@@ -94,6 +95,9 @@ function addBook(event) {
     const read = document.getElementById("read").checked;
     const book = addBookToLibrary(title, author, pages, read);
     listBook(book);
+    document.querySelector("form").remove();
+    document.getElementById("new-book").disabled = false;
+    document.getElementById("add-book-form").style.maxHeight = "0px";
 }
 
 addBookToLibrary("Odyssey", "Homer", 12109, false);
