@@ -77,7 +77,6 @@ function showForm(){
     button.type = "submit";
     button.textContent = "Add book";
     form.appendChild(button);
-    div.style.maxHeight = "150px";
     div.appendChild(form);
     form.addEventListener("submit", addBook);
     document.getElementById("new-book").disabled = true;
@@ -105,7 +104,6 @@ function addBook(event) {
     listBook(book, myLibrary.length - 1);
     document.querySelector("form").remove();
     document.getElementById("new-book").disabled = false;
-    document.getElementById("add-book-form").style.maxHeight = "0px";
 }
 
 function removeBook() {

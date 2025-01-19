@@ -39,8 +39,6 @@ button#new-book:active {
 #add-book-form {
     background-color: aquamarine;
     font-weight: bold;
-    max-height: 0px;
-    transition: all 1s;
 }
 
 form {
@@ -98,8 +96,4 @@ form {
 
 .card > p {
     text-align: center;
-}
-
-.read {
-
 }
