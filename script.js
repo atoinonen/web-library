@@ -31,10 +31,12 @@ function listBook(book, index) {
     const cardTitle = document.createElement("div");
     cardTitle.className = "card-title";
 
-    const read = document.createElement("span");
-    read.textContent = book.read ? "☑" : "☐";
+    const read = document.createElement("input");
+    read.type = "checkbox";
+    read.checked = book.read;
     read.className = "checkmark";
     cardTitle.appendChild(read);
+    read.addEventListener("click", changeReadStatus);
 
     const title = document.createElement("h2");
     title.textContent = book.title;
@@ -115,6 +117,11 @@ function removeBook() {
 
 function removeBookFromLibrary(index, library=myLibrary) {
     library.splice(index, 1);
+}
+
+function changeReadStatus() {
+    const index = this.parentNode.parentNode.id;
+    myLibrary.at(index).read = this.checked;
 }
 
 addBookToLibrary("Odyssey", "Homer", 12109, false);
