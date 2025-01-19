@@ -30,14 +30,18 @@ function listBook(book) {
     const cardTitle = document.createElement("div");
     cardTitle.className = "card-title";
 
-    const title = document.createElement("h2");
-    title.textContent = book.title;
-    cardTitle.appendChild(title);
-
     const read = document.createElement("span");
     read.textContent = book.read ? "☑" : "☐";
     read.className = "checkmark";
     cardTitle.appendChild(read);
+
+    const title = document.createElement("h2");
+    title.textContent = book.title;
+    cardTitle.appendChild(title);
+
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "x";
+    cardTitle.appendChild(closeButton);
 
     card.appendChild(cardTitle);
 

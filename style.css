@@ -71,6 +71,23 @@ form {
     text-align: center;
 }
 
+.card-title > button {
+    border-radius: 10px;
+    background-color: rgb(2, 49, 34);
+    color: aquamarine;
+    border: 2px solid rgb(2, 49, 34);
+    height: min-content;
+}
+
+.card-title > button:hover {
+    border: 2px solid red;
+}
+
+.card-title > button:active {
+    color: rgb(2, 49, 34);
+    transition: .4s;
+}
+
 .checkmark {
     flex: 0;
 }
