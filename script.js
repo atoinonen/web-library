@@ -17,15 +17,16 @@ function addBookToLibrary(title, author, pages, read, library = myLibrary) {
 }
 
 function listLibrary(library = myLibrary) {
-    for (var book of library) {
-        listBook(book);
+    for (var [index, book] of library.entries()) {
+        listBook(book, index);
     }
 }
 
-function listBook(book) {
+function listBook(book, index) {
     const list = document.getElementById("list");
     const card = document.createElement("div");
-    card.className = "card"
+    card.className = "card";
+    card.id = index;
 
     const cardTitle = document.createElement("div");
     cardTitle.className = "card-title";
@@ -42,6 +43,7 @@ function listBook(book) {
     const closeButton = document.createElement("button");
     closeButton.textContent = "x";
     cardTitle.appendChild(closeButton);
+    closeButton.addEventListener("click", removeBook);
 
     card.appendChild(cardTitle);
 
@@ -98,10 +100,21 @@ function addBook(event) {
     const pages = document.getElementById("pages").value;
     const read = document.getElementById("read").checked;
     const book = addBookToLibrary(title, author, pages, read);
-    listBook(book);
+    listBook(book, myLibrary.length - 1);
     document.querySelector("form").remove();
     document.getElementById("new-book").disabled = false;
     document.getElementById("add-book-form").style.maxHeight = "0px";
+}
+
+function removeBook() {
+    const index = this.parentNode.parentNode.id
+    removeBookFromLibrary(index);
+    this.parentNode.parentNode.parentNode.replaceChildren();
+    listLibrary();
+}
+
+function removeBookFromLibrary(index, library=myLibrary) {
+    library.splice(index, 1);
 }
 
 addBookToLibrary("Odyssey", "Homer", 12109, false);
