@@ -8,11 +8,12 @@ function Book(title, author, pages, read) {
     this.info = function() {
         return this.title + " by " + this.author + ", " + this.pages + " pages, " + (this.read ? "already read." : "not read yet.");
     };
-    addBookToLibrary(this);
 }
 
-function addBookToLibrary(book, library = myLibrary) {
-    myLibrary.push(book);
+function addBookToLibrary(title, author, pages, read, library = myLibrary) {
+    const book = new Book(title, author, pages, read);
+    library.push(book);
+    return book;
 }
 
 function listLibrary(library = myLibrary) {
@@ -91,14 +92,14 @@ function addBook(event) {
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const read = document.getElementById("read").checked;
-    const book = new Book(title, author, pages, read);
+    const book = addBookToLibrary(title, author, pages, read);
     listBook(book);
 }
 
-new Book("Odyssey", "Homer", 12109, false);
-new Book("Hevoskuiskaaja", "Nicholas Evans", 678, true);
-new Book("Shogun", "James Clavell", 1152, true);
-new Book("Taipan", "James Clavell", 899, false)
+addBookToLibrary("Odyssey", "Homer", 12109, false);
+addBookToLibrary("Hevoskuiskaaja", "Nicholas Evans", 678, true);
+addBookToLibrary("Shogun", "James Clavell", 1152, true);
+addBookToLibrary("Taipan", "James Clavell", 899, false)
 listLibrary()
 const newBookButton = document.getElementById("new-book");
 newBookButton.addEventListener("click", showForm);
